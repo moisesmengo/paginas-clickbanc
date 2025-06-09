@@ -1,12 +1,8 @@
-# 🧩 Estrutura de Código para Páginas ClickBank
-
-Este documento descreve os elementos obrigatórios e scripts que devem estar presentes nas páginas de vendas e upsells integradas com ClickBank.
-
----
+# 🧾 ClickBank Pages - Estrutura e Scripts Obrigatórios
 
 ## 📌 Footer Obrigatório
 
-Inserir o seguinte código no **rodapé das páginas**:
+Inclua este footer **em todas as páginas** (VSL, DTC, upsell, downsell, etc.):
 
 ```html
 <nav>
@@ -44,34 +40,28 @@ Inserir o seguinte código no **rodapé das páginas**:
 
 <div class="disclaimer">
   <p style="margin-bottom: 14px">
-    ClickBank is the retailer of this product. CLICKBANK® is a
-    registered trademark of Click Sales, Inc., a Delaware corporation
-    located at 1444 S. Entertainment Ave., Suite 410 Boise, ID 83709,
-    USA and used by permission. ClickBank’s role as retailer does not
-    constitute an endorsement, approval or review of this product or
-    any claim, statement or opinion used in promotion of this product.
+    ClickBank is the retailer of this product. CLICKBANK® is a registered trademark of Click Sales, Inc.,
+    a Delaware corporation located at 1444 S. Entertainment Ave., Suite 410 Boise, ID 83709, USA and used
+    by permission. ClickBank’s role as retailer does not constitute an endorsement, approval or review of
+    this product or any claim, statement or opinion used in promotion of this product.
   </p>
   <p>
-    Testimonials, case studies, and examples found on this page are
-    results that have been forwarded to us by users of Arialief and
-    related products are not intended to represent or guarantee that
-    anyone will achieve the same or similar results.
+    Testimonials, case studies, and examples found on this page are results that have been forwarded to
+    us by users of Arialief and related products are not intended to represent or guarantee that anyone
+    will achieve the same or similar results.
   </p>
 </div>
 
 <div class="disclaimer" style="background: #044356">
   <p style="margin-bottom: 0; font-size: 14px; color: #fff">
-    Statements on this website have not been evaluated by the Food and
-    Drug Administration. Products are not intended to diagnose, treat,
-    cure or prevent any disease. If you are pregnant, nursing, taking
-    medication, or have a medical condition, consult your physician
-    before using our products.
+    Statements on this website have not been evaluated by the Food and Drug Administration. Products are
+    not intended to diagnose, treat, cure or prevent any disease. If you are pregnant, nursing, taking
+    medication, or have a medical condition, consult your physician before using our products.
   </p>
 </div>
-📦 Parâmetros de URL e LocalStorage
-Todas as páginas de venda devem conter este script para capturar parâmetros da URL e armazená-los no localStorage:
+## 🔁 Script: Captura e Propagação de Parâmetros
 
- 
+```html
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const keys = {
@@ -101,7 +91,6 @@ Todas as páginas de venda devem conter este script para capturar parâmetros da
     }
 
     const links = document.querySelectorAll(".area-kits a");
-
     links.forEach((link) => {
       const url = new URL(link.href);
       if (values.param) url.searchParams.set("param", values.param);
@@ -110,17 +99,13 @@ Todas as páginas de venda devem conter este script para capturar parâmetros da
       if (values.rtkcmpid) url.searchParams.set("rtkcmpid", values.rtkcmpid);
       if (values.affiliate) url.searchParams.set("affiliate", values.affiliate);
       if (values.tid) url.searchParams.set("tid", values.tid);
-
       link.href = url.toString();
     });
   });
 </script>
-Obs: Os parâmetros que precisam passar entre páginas devem obrigatoriamente estar incluídos no objeto keys.
+## 🧷 Script: Propagação para Checkout via Botões
 
-🛒 Propagação dos Parâmetros no Link de Checkout
-Inserir nas páginas de venda, upsell e downsell:
-
-
+```html
 <script>
   function getQueryParams() {
     return new URLSearchParams(window.location.search);
@@ -136,8 +121,7 @@ Inserir nas páginas de venda, upsell e downsell:
       }
     });
 
-    let finalParamsString = originalParams.toString();
-    return finalParamsString ? \`\${baseUrl}?\${finalParamsString}\` : baseUrl;
+    return originalParams.toString() ? `${baseUrl}?${originalParams.toString()}` : baseUrl;
   }
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -150,10 +134,11 @@ Inserir nas páginas de venda, upsell e downsell:
     });
   });
 </script>
-🎬 Páginas com Vídeo (VSL, Upsell, WB)
-Inserir o HTML e script a seguir para exibir conteúdo em vídeo ou texto, dependendo do parâmetro param na URL:
+## 🎥 Script: Exibição Condicional Texto/Vídeo
 
- 
+### Estrutura HTML
+
+```html
 <div class="card sempa">
   <!-- Conteúdo em texto -->
 </div>
@@ -161,7 +146,9 @@ Inserir o HTML e script a seguir para exibir conteúdo em vídeo ou texto, depen
 <div class="compa center">
   <!-- Conteúdo em vídeo -->
 </div>
- 
+### 🎥 Script: Exibição Condicional Texto/Vídeo
+
+```html
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const sempa = document.querySelector(".card.sempa");
@@ -190,3 +177,10 @@ Inserir o HTML e script a seguir para exibir conteúdo em vídeo ou texto, depen
     }, 0);
   });
 </script>
+## ✅ Checklist Final
+
+- [x] Footer com disclaimers obrigatórios  
+- [x] Captura e armazenamento de parâmetros da URL  
+- [x] Propagação dos parâmetros para links de checkout  
+- [x] Exibição condicional de vídeo/texto em páginas VSL
+- [x] Revova preços "cortados"
