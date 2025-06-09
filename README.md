@@ -71,10 +71,7 @@ Inserir o seguinte código no **rodapé das páginas**:
 📦 Parâmetros de URL e LocalStorage
 Todas as páginas de venda devem conter este script para capturar parâmetros da URL e armazená-los no localStorage:
 
-html
-Sempre exibir os detalhes
-
-Copiar
+ 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const keys = {
@@ -123,10 +120,7 @@ Obs: Os parâmetros que precisam passar entre páginas devem obrigatoriamente es
 🛒 Propagação dos Parâmetros no Link de Checkout
 Inserir nas páginas de venda, upsell e downsell:
 
-html
-Sempre exibir os detalhes
 
-Copiar
 <script>
   function getQueryParams() {
     return new URLSearchParams(window.location.search);
@@ -159,11 +153,7 @@ Copiar
 🎬 Páginas com Vídeo (VSL, Upsell, WB)
 Inserir o HTML e script a seguir para exibir conteúdo em vídeo ou texto, dependendo do parâmetro param na URL:
 
-HTML
-html
-Sempre exibir os detalhes
-
-Copiar
+ 
 <div class="card sempa">
   <!-- Conteúdo em texto -->
 </div>
@@ -171,11 +161,7 @@ Copiar
 <div class="compa center">
   <!-- Conteúdo em vídeo -->
 </div>
-Script
-html
-Sempre exibir os detalhes
-
-Copiar
+ 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const sempa = document.querySelector(".card.sempa");
