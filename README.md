@@ -2,8 +2,6 @@
 
 ## 📌 Footer Obrigatório
 
-Inclua este footer **em todas as páginas** (VSL, DTC, upsell, downsell, etc.):
-
 ```html
 <nav>
   <a href="terms.html">Terms & Conditions</a>
@@ -59,8 +57,10 @@ Inclua este footer **em todas as páginas** (VSL, DTC, upsell, downsell, etc.):
     medication, or have a medical condition, consult your physician before using our products.
   </p>
 </div>
+```
 ## 🔁 Script: Captura e Propagação de Parâmetros
-
+Inclua este footer **em todas as páginas** (VSL, DTC, upsell, downsell, etc.):
+código que pega parâmetros da url, armazena em localstorage e recupera nas páginas de venda
 ```html
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -103,7 +103,10 @@ Inclua este footer **em todas as páginas** (VSL, DTC, upsell, downsell, etc.):
     });
   });
 </script>
+```
 ## 🧷 Script: Propagação para Checkout via Botões
+Código que envia os parâmetros entre as páginas pelo link de checkout. 
+let buttons = document.querySelectorAll(".area-kits a"); Verificar se os botões têm esse seletor
 
 ```html
 <script>
@@ -134,6 +137,8 @@ Inclua este footer **em todas as páginas** (VSL, DTC, upsell, downsell, etc.):
     });
   });
 </script>
+```
+
 ## 🎥 Script: Exibição Condicional Texto/Vídeo
 
 ### Estrutura HTML
@@ -146,6 +151,8 @@ Inclua este footer **em todas as páginas** (VSL, DTC, upsell, downsell, etc.):
 <div class="compa center">
   <!-- Conteúdo em vídeo -->
 </div>
+
+```
 ### 🎥 Script: Exibição Condicional Texto/Vídeo
 
 ```html
@@ -177,6 +184,8 @@ Inclua este footer **em todas as páginas** (VSL, DTC, upsell, downsell, etc.):
     }, 0);
   });
 </script>
+
+``` 
 ## ✅ Checklist Final
 
 - [x] Footer com disclaimers obrigatórios  
