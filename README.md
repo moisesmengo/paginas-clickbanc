@@ -61,6 +61,7 @@
 ## 🔁 Script: Captura e Propagação de Parâmetros
 Inclua este footer **em todas as páginas** (VSL, DTC, upsell, downsell, etc.):
 código que pega parâmetros da url, armazena em localstorage e recupera nas páginas de venda
+- Todos os parâmetros que precisam passar de página para página devem estar em keys
 ```html
 <script>
   document.addEventListener("DOMContentLoaded", function () {
